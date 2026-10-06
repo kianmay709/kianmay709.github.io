@@ -214,7 +214,12 @@
           <p>Tell us a little about your shop. We will use it to decide whether a Profit Leak Audit is a good fit.</p>
           <a class="direct-email" href="mailto:kian@stonevalecommerce.com">kian@stonevalecommerce.com</a>
         </div>
-        <form id="audit-form" class="audit-form reveal">
+        <form id="audit-form" class="audit-form reveal" action="https://formsubmit.co/kian@stonevalecommerce.com" method="POST">
+          <input type="hidden" name="_subject" value="New Stonevale Profit Leak Audit enquiry" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://stonevalecommerce.com/thank-you.html" />
+          <input type="hidden" name="_autoresponse" value="Thanks for contacting Stonevale Commerce. We've received your Profit Leak Audit enquiry and will be in touch shortly." />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" />
           <div class="form-row two">
             <label>Your name<input name="name" type="text" autocomplete="name" required /></label>
             <label>Work email<input name="email" type="email" autocomplete="email" required /></label>
@@ -234,7 +239,7 @@
           </label>
           <label>What would you most like us to investigate?<textarea name="concern" rows="4" placeholder="Returns, a specific SKU, aftersales, shop health…"></textarea></label>
           <button class="button button-light" type="submit">Send audit enquiry</button>
-          <p class="form-note">Submitting opens your email app with the enquiry pre-filled. No form data is stored on this website.</p>
+          <p class="form-note">Your enquiry is sent directly to Stonevale Commerce. By submitting, you agree that we may use these details to respond to your enquiry.</p>
         </form>
       </div>
     </section>
