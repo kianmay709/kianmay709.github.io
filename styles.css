@@ -315,3 +315,19 @@ details p { color:#666; padding:0 45px 26px 0; margin:0; }
 .services-overview-link { display: inline-block; margin-top: 28px; }
 @media (max-width: 980px) { .services-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .services-overview { padding-top: 58px; padding-bottom: 62px; } .services-overview-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 26px; } .service-overview-card { padding: 22px; } .service-overview-card .index { margin-bottom: 12px; } }
+
+/* Distinct sample audit showcase */
+.sample .section-heading{max-width:860px;margin-bottom:34px}
+.sample-audits-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.sample-audit-card{border:1px solid var(--line);background:#fff;border-radius:20px;padding:34px;display:flex;flex-direction:column;align-items:flex-start}
+.sample-audit-card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;margin-bottom:30px}
+.sample-audit-number{font-size:11px;letter-spacing:.13em;font-weight:750;color:#6c6c6c}
+.sample-audit-pill{font-size:11px;border:1px solid #d7d7d2;border-radius:100px;padding:5px 10px;white-space:nowrap}
+.sample-audit-card h3{font:400 clamp(27px,3vw,36px)/1.13 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin-bottom:14px}
+.sample-audit-card p{color:#5b5b5b;font-size:15px;line-height:1.65}
+.sample-audit-card .sample-audit-subtitle{color:var(--ink);font-weight:650}
+.sample-audit-divider{height:1px;background:var(--line);width:100%;margin:auto 0 14px}
+.sample-audit-card .sample-audit-demo{font-size:12px;color:#737373;margin:0 0 22px}
+.sample-audit-card .button{margin-top:auto}
+.sample-scope-note{color:#777;font-size:13px;margin:24px 0 0;max-width:900px}
+@media(max-width:760px){.sample-audits-grid{grid-template-columns:1fr}.sample-audit-card{padding:26px}.sample-audit-card-top{margin-bottom:20px}}
