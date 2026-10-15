@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample Ecommerce Operations Audit | Stonevale Commerce</title>
+<meta name="description" content="A fully fictional ecommerce operations audit demonstrating Stonevale Commerce's approach to orders, fulfilment, inventory, returns, reporting and automation.">
+<link rel="icon" href="assets/stonevale-mark.svg" type="image/svg+xml">
+<style>
+:root{--ink:#111214;--muted:#62656a;--line:#e3e4e2;--soft:#f5f4f0;--navy:#202a35;--gold:#ba9963}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#eeede9;font:15px/1.62 Inter,system-ui,-apple-system,Arial,sans-serif}
+a{color:inherit}header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{max-width:1160px;padding:13px 26px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{text-decoration:none;display:flex;align-items:center;gap:10px;font:22px Georgia,serif}.brand img{width:34px}
+.nav a.back{border:1px solid #cfcfc9;border-radius:100px;text-decoration:none;padding:7px 15px;font-size:13px;font-weight:650}
+.wrap{max-width:1060px;margin:35px auto 70px;padding:0 20px}.page{background:#fff;margin-bottom:18px;padding:58px 64px;box-shadow:0 8px 30px #0000000c;min-height:720px}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#727477}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#777}
+h1,h2,h3{font-family:Georgia,Times,serif;font-weight:400;letter-spacing:-.035em;line-height:1.09}h1{font-size:clamp(46px,7vw,84px);margin:35px 0 22px}h2{font-size:clamp(32px,4vw,49px);margin:15px 0 24px}h3{font-size:23px;margin:0 0 12px}p{margin:0 0 15px}p.lede{font-size:19px;color:#45494d;max-width:660px}strong{font-weight:720}
+.badge{display:inline-block;border:1px solid #dac797;background:#faf6ea;color:#6a542b;font-size:10px;letter-spacing:.1em;font-weight:800;padding:8px 12px;text-transform:uppercase}
+.rule{height:1px;background:var(--line);margin:32px 0}.hero-footer{display:flex;justify-content:space-between;gap:14px;margin-top:90px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi{border:1px solid var(--line);padding:21px 17px}.kpi span{display:block;color:var(--muted);font-size:12px}.kpi b{font:30px Georgia,serif;display:block;margin-top:8px}.kpi small{display:block;color:var(--muted);font-size:11px;margin-top:7px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:25px}.note{background:var(--soft);padding:20px 23px;border-left:3px solid var(--ink);margin:24px 0}.note p:last-child{margin:0}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:20px 0 25px}th{text-align:left;background:var(--soft);color:#323537}td,th{padding:12px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:last-child,th:last-child{text-align:right}table.text-table td:last-child,table.text-table th:last-child{text-align:left}
+.meter{height:11px;background:#ecece8;border-radius:10px;overflow:hidden}.meter i{height:100%;display:block;background:var(--navy)}.bar-label{display:flex;justify-content:space-between;font-size:13px;margin:15px 0 5px}
+.tag{display:inline-block;background:#202a35;color:#fff;padding:3px 9px;font-size:10px;font-weight:750;border-radius:30px}.tag.neutral{background:#eeede8;color:#303030}
+.finding{padding:20px 0;border-bottom:1px solid var(--line)}.finding:first-of-type{border-top:1px solid var(--line)}.finding h3{font:25px Georgia,serif;margin-bottom:8px}.finding .meta{color:#666;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
+.action{display:grid;grid-template-columns:35px 1fr 130px;gap:14px;padding:19px 0;border-bottom:1px solid var(--line)}.action .num{font:28px Georgia,serif}.action h3{font:22px Georgia,serif;margin-bottom:5px}.action p{font-size:13px;color:#52565b}.action aside{font-size:12px;text-align:right;color:#53585c}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#ddd;border:1px solid #ddd;margin:20px 0 35px}.week{background:#fff;padding:18px}.week strong{display:block;font:23px Georgia,serif;margin-bottom:9px}.week p{font-size:12px;color:#555}
+.footer{border-top:1px solid var(--line);margin-top:36px;padding-top:13px;display:flex;justify-content:space-between;color:#838383;font-size:11px;gap:14px}
+@media(max-width:800px){.page{padding:36px 29px;min-height:0}.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,1fr)}.action{grid-template-columns:25px 1fr}.action aside{grid-column:2;text-align:left}.wrap{margin-top:16px}.hero-footer{margin-top:65px}}
+@media(max-width:480px){.grid,.timeline{grid-template-columns:1fr}.page{padding:30px 21px}.brand{font-size:17px}.nav{padding:12px 14px}.hero-footer{display:block}td,th{padding:9px 6px;font-size:11px}}
+@media print{header{display:none}.wrap{max-width:none;margin:0;padding:0}.page{break-after:page;box-shadow:none;margin:0;min-height:250mm}body{background:#fff}.page:last-child{break-after:auto}}
+</style></head>
+<body><header><div class="nav"><a class="brand" href="index.html"><img src="assets/stonevale-mark.svg" alt="">Stonevale Commerce</a><a class="back" href="index.html#sample">← All sample audits</a></div></header>
+<main class="wrap">
+<section class="page">
+<img src="assets/stonevale-logo.svg" alt="Stonevale Commerce" style="width:220px;max-width:80%">
+<p class="kicker" style="margin-top:95px">Operations intelligence / Illustrative report</p>
+<h1>Ecommerce<br>Operations Audit</h1>
+<p class="lede">A structured review of order processing, fulfilment, inventory, returns, reporting and opportunities to reduce repetitive work.</p>
+<p style="margin-top:30px"><span class="badge">Fictional business &amp; data — demonstration only</span></p>
+<div class="hero-footer"><span><strong>Example client:</strong> Northline Home Co.<br>Fictional Shopify-led home accessories retailer</span><span><strong>Review period:</strong> 1 Aug – 29 Sep 2026<br>Prepared as a Stonevale sample</span></div>
+</section>
+<section class="page">
+<p class="eyebrow">01 / Executive summary</p><h2>The operational picture</h2>
+<p>Northline Home Co. is a fictional UK home accessories business selling primarily through Shopify, with a small secondary marketplace channel. This example uses invented but internally consistent data to demonstrate how a Stonevale audit could identify operational risks and set priorities.</p>
+<div class="grid">
+<div class="kpi"><span>Orders placed</span><b>1,200</b><small>60-day period</small></div>
+<div class="kpi"><span>Gross order value</span><b>£62,400</b><small>£52 per order</small></div>
+<div class="kpi"><span>Orders dispatched late</span><b>9.5%</b><small>114 of 1,200</small></div>
+<div class="kpi"><span>Refund value</span><b>£3,900</b><small>6.25% of gross order value</small></div>
+</div>
+<div class="note"><strong>Executive finding.</strong><p>Late dispatches cluster around manual stock checks and inconsistent pick/pack handoffs. Inventory exceptions and return reasons should be monitored in one weekly scorecard before any automation is introduced.</p></div>
+<h3>Three priority themes</h3>
+<div class="finding"><div class="meta">Priority 01 · fulfilment</div><h3>Dispatch reliability</h3><p>114 orders missed the internal dispatch target. The example dataset records 42 orders with pick/pack exceptions, though the overlap with late orders is not established.</p></div>
+<div class="finding"><div class="meta">Priority 02 · inventory</div><h3>Stock visibility</h3><p>Nine of 48 active SKUs experienced at least one stockout during the review. The underlying record does not establish total lost sales, so no revenue-recovery figure is claimed.</p></div>
+<div class="finding"><div class="meta">Priority 03 · reporting</div><h3>Manual checks</h3><p>Two operations staff estimate a combined 12 hours per week preparing reconciliations, exception lists and reports. This is self-reported time, not independently timed activity.</p></div>
+<div class="footer"><span>Northline Home Co. · Fictional example</span><span>02 / Stonevale Commerce</span></div>
+</section>
+<section class="page">
+<p class="eyebrow">02 / Scope &amp; method</p><h2>What we reviewed</h2>
+<p>The hypothetical review assumes order-level records, fulfilment event timestamps, inventory status changes, return/refund exports and a guided workflow interview. Metrics use the same 60-day window unless stated otherwise.</p>
+<table class="text-table"><tr><th>Workstream</th><th>Example source</th><th>Analytical question</th></tr>
+<tr><td>Orders</td><td>Shopify order export</td><td>How many orders required intervention?</td></tr>
+<tr><td>Fulfilment</td><td>Dispatch tracking log</td><td>Where are targets missed?</td></tr>
+<tr><td>Inventory</td><td>SKU availability history</td><td>Which items regularly stock out?</td></tr>
+<tr><td>Returns</td><td>Refund &amp; return records</td><td>Which documented reasons recur?</td></tr>
+<tr><td>Reporting</td><td>Staff interviews / worksheets</td><td>Where does manual administration accumulate?</td></tr></table>
+<div class="note"><strong>Metric definitions.</strong><p>Gross order value = sum of original order totals before refunds (£62,400). AOV = £62,400 ÷ 1,200 = £52. Late dispatch rate = 114 ÷ 1,200 = 9.5%. Pick/pack exception rate = 42 ÷ 1,200 = 3.5%. Refund-value ratio = £3,900 ÷ £62,400 = 6.25%; this is not the percentage of orders returned.</p></div>
+<h3>Evidence confidence</h3><p><span class="tag">Observed in fictional exports</span> Order volume, lateness, reported SKU stockout flags and refund totals. <span class="tag neutral">Interview estimate</span> Time spent preparing reports. <span class="tag neutral">Requires validation</span> Root cause, recoverable revenue and achievable time savings.</p>
+<div class="footer"><span>Illustrative only — no real client information</span><span>03 / Stonevale Commerce</span></div>
+</section>
+<section class="page">
+<p class="eyebrow">03 / Fulfilment &amp; inventory</p><h2>Where the friction appears</h2>
+<div class="two"><div><h3>Dispatch performance</h3><p>Of 1,200 orders, 1,086 were dispatched by the internal target and 114 were late.</p>
+<div class="bar-label"><span>On time</span><b>90.5%</b></div><div class="meter"><i style="width:90.5%"></i></div>
+<div class="bar-label"><span>Late</span><b>9.5%</b></div><div class="meter"><i style="width:9.5%;background:#ba9963"></i></div>
+<p style="margin-top:18px;color:#62656a;font-size:13px">The 42 pick/pack exceptions represent 3.5% of orders; they should not be added to late dispatches without checking overlap.</p></div>
+<div><h3>Inventory observations</h3><p>48 active SKUs were reviewed. Nine experienced one or more stockouts in the 60-day window.</p>
+<div class="bar-label"><span>SKUs with stockout events</span><b>9 / 48</b></div><div class="meter"><i style="width:18.75%;background:#ba9963"></i></div>
+<p style="margin-top:18px;color:#62656a;font-size:13px">This is 18.75% of active SKUs, not 18.75% of orders or 18.75% revenue lost.</p></div></div>
+<h3 style="margin-top:30px">Working hypotheses to test</h3>
+<table class="text-table"><tr><th>Signal</th><th>Possible explanation</th><th>How we'd verify</th></tr>
+<tr><td>Missed dispatch targets</td><td>Delayed stock confirmation / handoffs</td><td>Compare order, allocation and dispatch timestamps</td></tr>
+<tr><td>Repeated SKU stockouts</td><td>Unclear reorder points</td><td>Review stock history, lead times and replenishment rules</td></tr>
+<tr><td>Picking exceptions</td><td>Unclear locations or manual checks</td><td>Sample exception logs and observe the workflow</td></tr></table>
+<div class="note"><strong>Recommendation.</strong><p>Start with an exception log and weekly fulfilment scorecard. Only then decide whether inventory alerts and dispatch handoff automations would address verified causes.</p></div>
+<div class="footer"><span>Hypotheses are not established causes</span><span>04 / Stonevale Commerce</span></div>
+</section>
+<section class="page">
+<p class="eyebrow">04 / Returns &amp; workflow reporting</p><h2>Two areas to investigate</h2>
+<h3>Returns and refunds</h3>
+<p>The sample records <strong>78 refunded orders</strong> with a combined <strong>£3,900</strong> of refunds. That is 6.5% of orders with refunds and a refund-value ratio of 6.25% of gross order value. These different measures should not be confused.</p>
+<table><tr><th>Reason recorded for refunded orders</th><th>Orders</th></tr>
+<tr><td>Damaged in transit</td><td>28</td></tr><tr><td>Product not as expected</td><td>24</td></tr><tr><td>Wrong item / picking issue</td><td>14</td></tr><tr><td>Other or unspecified</td><td>12</td></tr>
+<tr><th>Total</th><th>78</th></tr></table>
+<p>These labels are based on fictional refund records and are not proof that a seller action caused each refund. They suggest a need to sample supporting tickets, packaging evidence and product descriptions.</p>
+<h3 style="margin-top:30px">Reporting and manual administration</h3>
+<p>The example team reports spending approximately <strong>12 staff-hours each week</strong> reconciling orders, checking stock exceptions and preparing management summaries.</p>
+<div class="note"><strong>Automation candidate.</strong><p>Create a central order-exceptions table and a daily exception notification. Build a prototype on a small data sample, test false alerts and assign responsibility for maintenance. No time-saving claim should be made before measuring the new process.</p></div>
+<div class="footer"><span>Refund reasons are categorisations, not causal proof</span><span>05 / Stonevale Commerce</span></div>
+</section>
+<section class="page">
+<p class="eyebrow">05 / Prioritised recommendations</p><h2>The first fixes we'd test</h2>
+<div class="action"><div class="num">01</div><div><h3>Introduce a dispatch exceptions log</h3><p>Track order age, owner, reason, next action and resolution timestamp. Review late dispatches weekly by cause and SKU.</p><span class="tag">High priority</span></div><aside>Owner: Operations lead<br>Target: Week 1</aside></div>
+<div class="action"><div class="num">02</div><div><h3>Set initial reorder triggers</h3><p>Define lead times, minimum stock and a simple alert process for the nine SKUs with recorded stockouts, then expand if useful.</p><span class="tag">High priority</span></div><aside>Owner: Inventory lead<br>Target: Week 2</aside></div>
+<div class="action"><div class="num">03</div><div><h3>Review 30 refund cases</h3><p>Sample cases across recorded reasons to test whether packaging, listing expectations or pick accuracy contributed to the outcome.</p><span class="tag">High priority</span></div><aside>Owner: CX lead<br>Target: Week 2</aside></div>
+<div class="action"><div class="num">04</div><div><h3>Build a consolidated weekly scorecard</h3><p>Track late dispatch %, exception counts, stockouts, refund-value ratio and open issues using consistent definitions.</p><span class="tag neutral">Medium priority</span></div><aside>Owner: Operations lead<br>Target: Week 3</aside></div>
+<div class="action"><div class="num">05</div><div><h3>Pilot one low-risk automation</h3><p>Automate an exception notification after the data definitions and manual process have been validated. Record baseline and post-pilot effort.</p><span class="tag neutral">Medium priority</span></div><aside>Owner: Systems lead<br>Target: Week 4</aside></div>
+<div class="footer"><span>Illustrative responsibilities; agree ownership with clients</span><span>06 / Stonevale Commerce</span></div>
+</section>
+<section class="page">
+<p class="eyebrow">06 / Suggested 30-day sequence</p><h2>From diagnosis to a measurable process</h2>
+<div class="timeline">
+<div class="week"><strong>Week 1</strong><p>Verify dispatch definition, open exceptions log, establish baseline.</p></div>
+<div class="week"><strong>Week 2</strong><p>Review stockout SKUs and sample 30 refund records.</p></div>
+<div class="week"><strong>Week 3</strong><p>Introduce scorecard and agree owners for recurring exceptions.</p></div>
+<div class="week"><strong>Week 4</strong><p>Pilot one notification workflow; compare against baseline.</p></div>
+</div>
+<h3>Measurement plan</h3>
+<table class="text-table"><tr><th>Measure</th><th>Baseline</th><th>What success would mean</th></tr>
+<tr><td>Late dispatches</td><td>9.5% (114/1,200)</td><td>Downward trend with cause-coded exceptions</td></tr>
+<tr><td>SKUs with stockouts</td><td>9/48 in 60 days</td><td>Fewer repeat stockouts over a comparable period</td></tr>
+<tr><td>Refund value ratio</td><td>6.25%</td><td>Improvement in validated, addressable reasons</td></tr>
+<tr><td>Manual reporting effort</td><td>12 hours/week (estimated)</td><td>Verified reduction without losing accuracy</td></tr></table>
+<div class="note"><strong>No guaranteed financial return.</strong><p>The sample does not convert problems into claimed recoverable profit. To estimate financial impact responsibly, we'd need item margins, actual cause attribution, expected intervention costs, order mix and post-change measurements.</p></div>
+<h3>What a real engagement would include</h3><p>Agreed scope, controlled data access, documented metric definitions, evidence-backed findings, prioritised recommendations and a results discussion. Implementation or ongoing support is separately scoped.</p>
+<div class="rule"></div>
+<p class="eyebrow">End of fictional sample audit</p>
+<p>Every business name, figure, operational observation and recommendation above is illustrative. This is not a client testimonial, a case study of actual results, or a representation that an audit has been performed for a real business.</p>
+<p><a href="index.html#contact" style="font-weight:700;text-decoration:none;border-bottom:1px solid">Discuss an operations review →</a></p>
+<div class="footer"><span>© Stonevale Commerce · Demonstration only</span><span>07 / End of report</span></div>
+</section>
+</main></body></html>
