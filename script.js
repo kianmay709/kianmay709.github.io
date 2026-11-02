@@ -5,14 +5,17 @@ if (menuToggle && mobileNav) {
   menuToggle.addEventListener('click', () => {
     const open = mobileNav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
   mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
     mobileNav.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open menu');
   }));
 }
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -33,7 +36,7 @@ auditForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const submitButton = auditForm.querySelector('button[type="submit"]');
-  const originalText = submitButton?.textContent || 'Send audit enquiry';
+  const originalText = submitButton?.innerHTML || 'Request a discovery call';
 
   if (submitButton) {
     submitButton.disabled = true;
@@ -57,7 +60,7 @@ auditForm?.addEventListener('submit', async (event) => {
     }
     if (submitButton) {
       submitButton.disabled = false;
-      submitButton.textContent = originalText;
+      submitButton.innerHTML = originalText;
     }
   }
 });
