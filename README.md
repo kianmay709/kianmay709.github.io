@@ -6,8 +6,9 @@ This repository is the publishing source for the existing GitHub Pages website. 
 
 ## Files and contact flow
 
-- `index.html`: positioning, services, potential solution examples, process, about, advisory demonstrations, FAQ and enquiry form.
-- `styles.css`: shared styles plus scoped homepage redesign.
+- `index.html`: concise positioning, expandable expertise, potential solution examples, approach, advisory demonstrations and enquiry form.
+- `styles.css`: retained shared styles for supporting pages.
+- `luxury.css`: the restrained editorial homepage, updated 3 November 2026; no card grids, with service details revealed on request.
 - `script.js`: mobile navigation, optional reveals on older layouts, year and enquiry submission handling.
 - `privacy.html`, `thank-you.html`: supporting contact pages.
 - `sample-audit.html`, `sample-ecommerce-audit.html`: existing fictional advisory demonstration reports, retained unchanged.
